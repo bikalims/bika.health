@@ -131,19 +131,6 @@ class Drug_Prohibitions(WorksheetImporter):
                 renameAfterCreation(obj)
 
 
-class Identifier_Types(WorksheetImporter):
-
-    def Import(self):
-        folder = self.context.bika_setup.bika_identifiertypes
-        for row in self.get_rows(3):
-            obj = _createObjectByType('IdentifierType', folder, tmpID())
-            if row['title']:
-                obj.edit(title=row['title'],
-                         description=row.get('description', ''),)
-                obj.unmarkCreationFlag()
-                renameAfterCreation(obj)
-
-
 class Immunizations(WorksheetImporter):
 
     def Import(self):

@@ -66,7 +66,6 @@ def setupHealthVarious(context):
                    'bika_casestatuses',
                    'bika_caseoutcomes',
                    'bika_epidemiologicalyears',
-                   'bika_identifiertypes',
                    'bika_casesyndromicclassifications',
                    ):
         obj = bika_setup._getOb(obj_id)
@@ -300,7 +299,6 @@ def setupHealthCatalogs(context):
     at.setCatalogsByType('CaseStatus', ['bika_setup_catalog', ])
     at.setCatalogsByType('CaseOutcome', ['bika_setup_catalog', ])
     at.setCatalogsByType('EpidemiologicalYear', ['bika_setup_catalog', ])
-    at.setCatalogsByType('IdentifierType', ['bika_setup_catalog', ])
     at.setCatalogsByType('CaseSyndromicClassification', ['bika_setup_catalog', ])
 
     addIndex(bsc,'getGender', 'FieldIndex')
@@ -319,6 +317,7 @@ def setupHealthCatalogs(context):
     addIndex(bpc, 'UID', 'FieldIndex')
     addIndex(bpc, 'Title', 'ZCTextIndex', zc_extras)
     addIndex(bpc, 'Description', 'ZCTextIndex', zc_extras)
+    addIndex(bpc, 'Identifier', 'KeywordIndex')
     addIndex(bpc, 'id', 'FieldIndex')
     addIndex(bpc, 'getId', 'FieldIndex')
     addIndex(bpc, 'Type', 'FieldIndex')

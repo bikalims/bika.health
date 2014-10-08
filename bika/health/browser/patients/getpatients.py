@@ -43,7 +43,7 @@ class ajaxGetPatients(BrowserView):
         for patient in proxies:
             patient = patient.getObject()
             addidfound = False
-            addids = patient.getPatientIdentifiers()
+            addids = patient.getIdentifier()
 
             for addid in addids:
                 if addid['Identifier'].lower().find(searchTerm) > -1:
@@ -61,7 +61,7 @@ class ajaxGetPatients(BrowserView):
                                  'ClientID': patient.getPrimaryReferrer().getClientID(),
                                  'ClientSysID': patient.getPrimaryReferrer().id,
                                  'PatientUID': patient.UID(),
-                                 'AdditionalIdentifiers': patient.getPatientIdentifiersStrHtml(),
+                                 'AdditionalIdentifiers': patient.getIdentifierStrHtml(),
                                  'PatientBirthDate': self.ulocalized_time(patient.getBirthDate(), long_format=0),
                                  'PatientGender': patient.getGender(),
                                  'MenstrualStatus':patient.getMenstrualStatus()})

@@ -45,12 +45,6 @@
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"/>
 
     <adapter
-      name="Identifier_Types"
-      factory="bika.health.setupdata.Identifier_Types"
-      provides="bika.lims.interfaces.ISetupDataImporter"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"/>
-
-    <adapter
       name="Immunizations"
       factory="bika.health.setupdata.Immunizations"
       provides="bika.lims.interfaces.ISetupDataImporter"

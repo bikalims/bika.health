@@ -50,6 +50,3 @@ class ICaseSyndromicClassifications(Interface):
 
 class IEpidemiologicalYears(Interface):
     ""
-
-class IIdentifierTypes(Interface):
-    ""

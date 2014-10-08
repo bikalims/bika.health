@@ -42,7 +42,6 @@ def initialize(context):
     from content.drug import Drug
     from content.drugprohibition import DrugProhibition
     from content.epidemiologicalyear import EpidemiologicalYear
-    from content.identifiertype import IdentifierType
     from content.immunization import Immunization
     from content.patient import Patient
     from content.patients import Patients
@@ -59,7 +58,6 @@ def initialize(context):
     from controlpanel.bika_drugprohibitions import DrugProhibitions
     from controlpanel.bika_drugs import Drugs
     from controlpanel.bika_epidemiologicalyears import EpidemiologicalYears
-    from controlpanel.bika_identifiertypes import IdentifierTypes
     from controlpanel.bika_immunizations import Immunizations
     from controlpanel.bika_treatments import Treatments
     from controlpanel.bika_vaccinationcenters import VaccinationCenters

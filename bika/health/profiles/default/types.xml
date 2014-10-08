@@ -17,8 +17,6 @@
  <object name="DrugProhibitions" meta_type="Factory-based Type Information with dynamic views"/>
  <object name="EpidemiologicalYear" meta_type="Factory-based Type Information with dynamic views"/>
  <object name="EpidemiologicalYears" meta_type="Factory-based Type Information with dynamic views"/>
- <object name="IdentifierType" meta_type="Factory-based Type Information with dynamic views"/>
- <object name="IdentifierTypes" meta_type="Factory-based Type Information with dynamic views"/>
  <object name="Patient" meta_type="Factory-based Type Information with dynamic views"/>
  <object name="Patients" meta_type="Factory-based Type Information with dynamic views"/>
  <object name="Doctor" meta_type="Factory-based Type Information with dynamic views"/>

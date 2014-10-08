@@ -156,7 +156,7 @@
                 <span tal:condition="python:patient and patient.getBirthDateEstimated() or ''">(estimated)</span>
             </td>
         </tr>
-        <tr tal:define="pids python:patient and patient.getPatientIdentifiers() or []"
+        <tr tal:define="pids python:patient and patient.getIdentifier() or []"
             tal:condition="pids">
             <td class="label" i18n:translate="">Patient Identifiers</td>
             <td tal:content="python:patient and patient.getGender() or ''">

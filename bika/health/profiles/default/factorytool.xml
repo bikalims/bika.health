@@ -10,7 +10,6 @@
   <type portal_type="Drug"/>
   <type portal_type="DrugProhibition"/>
   <type portal_type="EpidemiologicalYear"/>
-  <type portal_type="IdentifierType" />
   <type portal_type="Immunization" />
   <type portal_type="Patient"/>
   <type portal_type="Symptom"/>

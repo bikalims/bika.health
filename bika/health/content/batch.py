@@ -176,7 +176,7 @@ class BatchSchemaExtender(object):
                 showOn=True,
                 colModel = [{'columnName':'getPatientID','width':'20','label':_('Patient ID')},
                             {'columnName':'Title','width':'40','label':_('Full Name')},
-                            {'columnName':'PatientIdentifiers', 'width':'40','label':_('Additional Identifiers')}]
+                            {'columnName':'Identifier', 'width':'40','label':_('Additional Identifiers')}]
             ),
         ),
         # ExtComputedField('PatientID',

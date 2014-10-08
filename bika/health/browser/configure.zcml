@@ -19,7 +19,6 @@
   <include package=".drug"/>
   <include package=".drugprohibition"/>
   <include package=".epidemiologicalyear"/>
-  <include package=".identifiertype"/>
   <include package=".immunization"/>
   <include package=".patient"/>
   <include package=".patients"/>

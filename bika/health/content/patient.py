@@ -97,28 +97,6 @@ schema = Person.schema.copy() + Schema((
                      showAddress=False,
                  ),
     ),
-    RecordsField('PatientIdentifiers',
-                 type='patientidentifiers',
-                 subfields=('IdentifierType',
-                            'Identifier'),
-                 subfield_labels={'IdentifierType': _('Identifier Type'),
-                                  'Identifier': _('Identifier')},
-                 subfield_sizes={'Identifier': 15,
-                                 'Identifier Type': 25},
-                 widget=RecordsWidget(
-                 label=_('Additional identifiers'),
-                 description=_('Patient additional identifiers'),
-                     combogrid_options={
-                         'IdentifierType': {
-                             'colModel': [{'columnName':'IdentifierType', 'width':'30', 'label':_('Title')},
-                                          {'columnName':'Description', 'width':'70', 'label':_('Description')}],
-                             'url': 'getidentifiertypes',
-                             'showOn': True,
-                             'width': '550px'
-                         },
-                     },
-                 ),
-    ),
     TextField('Remarks',
               searchable=True,
               default_content_type='text/plain',
@@ -406,8 +384,8 @@ schema['MobilePhone'].schemata = 'Personal'
 #schema.moveField('PatientID', pos='top')
 schema.moveField('PrimaryReferrer', after='Surname')
 schema.moveField('PatientID', before='title')
-schema.moveField('PatientIdentifiers', after='PrimaryReferrer')
-schema.moveField('Gender', after='PatientIdentifiers')
+schema.moveField('Identifier', after='PrimaryReferrer')
+schema.moveField('Gender', after='Identifier')
 schema.moveField('Age', after='Gender')
 schema.moveField('BirthDate', after='Age')
 schema.moveField('BirthDateEstimated', after='BirthDate')
@@ -469,16 +447,16 @@ class Patient(Person):
         clients.insert(0, ['', ''])
         return DisplayList(clients)
 
-    def getPatientIdentifiersStr(self):
-        ids = self.getPatientIdentifiers()
+    def getIdentifierStr(self):
+        ids = self.getIdentifier()
         idsstr = ''
         for id in ids:
             idsstr += idsstr == '' and id['Identifier'] or (', ' + id['Identifier'])
         return idsstr
         #return self.getSendersPatientID()+" "+self.getSendersCaseID()+" "+self.getSendersSpecimenID()
 
-    def getPatientIdentifiersStrHtml(self):
-        ids = self.getPatientIdentifiers()
+    def getIdentifierStrHtml(self):
+        ids = self.getIdentifier()
         idsstr = '<table cellpadding="0" cellspacing="0" border="0" class="patientsidentifiers" style="text-align:left;width: 100%;"><tr><td>'
         for id in ids:
             idsstr += "<tr><td>" + id['IdentifierType'] + ':</td><td>' + id['Identifier'] + "</td></tr>"
