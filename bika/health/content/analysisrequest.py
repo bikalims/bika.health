@@ -77,7 +77,7 @@ class AnalysisRequestSchemaExtender(object):
             'PatientID',
             expression="context.Schema()['Patient'].get(context).getPatientID() if context.Schema()['Patient'].get(context) else None",
             mode="r",
-            read_permission=hpermissions.ViewPatients,
+            read_permission=permissions.ViewPatients,
             write_permission=permissions.ModifyPortalContent,
             widget=ComputedWidget(
                 visible=True,
