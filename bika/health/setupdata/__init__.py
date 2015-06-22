@@ -297,14 +297,31 @@ class Patients(WorksheetImporter):
             bsc = getToolByName(self.context, 'bika_setup_catalog')
             ethnicity = bsc(portal_type='Ethnicity', Title=row.get('Ethnicity', ''))
             if len(ethnicity) == 0:
-                raise IndexError("Invalid ethnicity: '%s'" % row['Ethnicity'])
-            ethnicity = ethnicity[0].getObject()
+                # We have to create a new ethnicity
+                efolder = self.context.bika_setup.bika_ethnicities
+                _eid = efolder.invokeFactory('Ethnicity', id=tmpID())
+                eobj = efolder[_eid]
+                eobj.edit(title=row.get('Ethnicity', ''),
+                         description='')
+                eobj.unmarkCreationFlag()
+                renameAfterCreation(eobj)
+                ethnicity = eobj
+            else:
+                ethnicity = ethnicity[0].getObject()
 
             _id = folder.invokeFactory('Patient', id=tmpID())
             obj = folder[_id]
             obj.unmarkCreationFlag()
             renameAfterCreation(obj)
-            Fullname = (row['Firstname'] + " " + row.get('Surname', '')).strip()
+            Fullname = (str(row['Firstname']) + " " + str(row.get('Surname', ''))).strip()
+            identifiers = []
+            if row.get('UELN', '') != '':
+                identifiers.append({'IdentifierType': 'UEALN', 'Identifier': row.get('UELN', '')})
+            if row.get('Transponder', '') != '':
+                identifiers.append({'IdentifierType': 'Transponder', 'Identifier': row.get('Transponder', '')})
+            if row.get('NationalID', '') != '':
+                identifiers.append({'IdentifierType': 'NationalID', 'Identifier': row.get('NationalID', '')})
+
             obj.edit(PatientID=row.get('PatientID'),
                      title=Fullname,
                      ClientPatientID = row.get('ClientPatientID', ''),
@@ -322,7 +339,8 @@ class Patients(WorksheetImporter):
                      Citizenship =row.get('Citizenship', ''),
                      MothersName = row.get('MothersName', ''),
                      CivilStatus =row.get('CivilStatus', ''),
-                     Anonymous = self.to_bool(row.get('Anonymous','False'))
+                     Anonymous = self.to_bool(row.get('Anonymous','False')),
+                     PatientIdentifiers=identifiers
                      )
             self.fill_contactfields(row, obj)
             self.fill_addressfields(row, obj)
