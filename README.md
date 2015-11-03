@@ -3,7 +3,7 @@ Bika Health LIS
 
 Bika Laboratory Information Management System customised for use in Health laboratories.
 
-Last stable version: **v3.1.8** · released: 2015-11-03
+Last stable version: **v3.2** · released: 2015-11-03
 
 [**Naringenin**](http://en.wikipedia.org/wiki/Naringenin) is a flavanone, a typeof flavonoid, that is considered to have a bioactive effect on human health as antioxidant, free radical scavenger, anti-inflammatory, carbohydrate metabolism promoter, and immune system modulator. It is the predominant flavanone in grapefruit.
 
